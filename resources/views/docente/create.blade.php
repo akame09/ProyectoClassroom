@@ -1,0 +1,49 @@
+Crear docentes
+
+<!-- Scripts
+<script src="{{ asset('js/app.js') }}" defer></script>
+
+
+<link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+<form action="{{ url("/docente") }}" method="post" >
+    @csrf
+    <div class="form-group">
+        <label for="E-mail" >E-mail: </label><br>
+        <input type="email" name="E-mail" id="E-mail"  ><br>
+    </div>
+    <div class="form-group">
+        <label for="Password" >Password: </label><br>
+        <input type="password" name="Password" id="Password"><br>
+    </div>
+    <div class="form-group">
+        <label for="Nombre" >Nombre: </label><br>
+        <input type="text" name="Nombre"  id="Nombre"><br>
+    </div>
+    <div class="form-group">
+        <label for="Apellido">Apellido: </label><br>
+        <input type="text" name="Apellido" id="Apellido"><br>
+    </div>
+    <div class="form-group">
+        <label for="Telefono">Telefono: </label><br>
+        <input type="number" name="Telefono" id="Telefono"><br>
+    </div>
+    <div class="form-group">
+        <label for="Curso">Curso: </label><br>
+        <select name="Curso" id="Curso"">
+            <option value="1">Administracion</option>
+            <option value="2">Contabilidad</option>
+            <!--<option value="Administrador">Administrador</option>
+            <option value="Estudiante">Estudiante</option> -->
+        </select><br>
+    </div>
+    <div class="form-group">
+        <label for="Tipo">Tipo de Usuario: </label><br>
+        <input type="text" name="Tipo"  id="Tipo" value="Docente" readonly><br>
+    </div>
+    <div class="form-group">
+        <input type="submit" name="Guardar"  id="Guardar" value="Guardar">
+    </div>
+
+</form>
+
