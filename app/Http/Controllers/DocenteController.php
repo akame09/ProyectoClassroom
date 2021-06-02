@@ -6,16 +6,17 @@ use App\Models\docente;
 use App\Models\curso;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\LoginController;
 
 class DocenteController extends Controller
 {
     //
-
     public function create(){
         return view('docente.create');
     }
 
     public function update(Request $request, $Id){
+
 
         $data = request()->except(['_token','_method']);
 
@@ -65,6 +66,14 @@ class DocenteController extends Controller
     }
 
     public function store(Request $request){
+
+        $request->validate([
+            'E-mail' => 'required',
+            'Password' => 'required|min:2|max:20',
+            'Nombre' => 'required',
+            'Apellido' => 'required',
+            'Telefono' => 'required',
+        ]);
 
         $data = request()->except('_token');
 
