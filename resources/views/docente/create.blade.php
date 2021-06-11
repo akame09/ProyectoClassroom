@@ -1,10 +1,18 @@
-Crear docentes
+
 
 <!-- Scripts
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 7
 <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+@include('menu')
+
+@php
+    use Illuminate\Support\Facades\DB;
+
+    $cur = DB::select("select * from curso");
+@endphp
 
 <form action="{{ url("/docente") }}" method="post" >
     @csrf
@@ -46,8 +54,9 @@ Crear docentes
     <div class="form-group">
         <label for="Curso">Curso: </label><br>
         <select name="Curso" id="Curso"">
-            <option value="1">Administracion</option>
-            <option value="2">Contabilidad</option>
+            @foreach ($cur as $curs)
+                <option value= {{ $curs->Id }}>{{ $curs->Nombre }}</option>
+            @endforeach
             <!--<option value="Administrador">Administrador</option>
             <option value="Estudiante">Estudiante</option> -->
         </select><br>
@@ -61,3 +70,6 @@ Crear docentes
     </div>
 
 </form>
+
+
+@include('footer')

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\curso;
+use App\Models\registromatricula;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -67,5 +68,16 @@ class CursoController extends Controller
         DB::insert("INSERT INTO curso (Nombre,Costo,Descripcion) VALUES ('$nombre','$costo','$descripcion')");
 
         return view('curso.create');
+    }
+
+    public function registro(Request $request){
+
+    }
+
+    public function show(){
+        $dat_id = session('id');
+        $MisDatos['MisDatos'] = DB::select("select c.Id, c.Nombre, c.Descripcion from curso as c join docente as d on d.id_curso=c.id where d.id = '$dat_id'");
+
+        return view('curso.micurso',$MisDatos);
     }
 }

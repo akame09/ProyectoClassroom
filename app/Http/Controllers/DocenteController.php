@@ -75,8 +75,6 @@ class DocenteController extends Controller
             'Telefono' => 'required',
         ]);
 
-        $data = request()->except('_token');
-
         $email = $_POST['E-mail'];
         $password = $_POST['Password'];
         $nombre = $_POST['Nombre'];
@@ -95,6 +93,14 @@ class DocenteController extends Controller
         //response()->json($data);
         //$resul = "Registrado Exitosamente";
         return view('docente.create');
+    }
+
+    public function show(){
+
+        $dat_id = session('id');
+        $MisDatos['MisDatos'] = DB::select("select Id, Email, Pass, Nombre, Apellido, Telefono, tipoUsuario from docente where Id='$dat_id'");
+
+        return view('docente.miperfil',$MisDatos);
     }
 /*
     public function index(){

@@ -1,14 +1,12 @@
-Mostrar lista de docentes
 
-<script src="{{ asset('js/app.js') }}" defer></script>
 
-<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+@include('menu')
 
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <div class="col-12 text-right">
             <table class="table table-dark" border="1">
-                <thead class="thead-light">
+                <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
                         <th>Nombre</th>
@@ -17,7 +15,7 @@ Mostrar lista de docentes
                         <th>E-mail</th>
                         <th>Contraseña</th>
                         <th>Curso</th>
-                        <th>Tipo de Usuario</th>
+                        <th>Tipo</th>
                         <th>Botones</th>
                     </tr>
                 </thead>
@@ -34,14 +32,18 @@ Mostrar lista de docentes
                             <td>{{ $docente->curso }}</td>
                             <td>{{ $docente->tipoUsuario }}</td>
                             <td>
-                                <a href="{{ url('/docente/'.$docente->Id.'/edit') }}">
-                                    Editar
-                                </a>
-                                <form action="{{ url('/docente/'.$docente->Id) }}" method="post">
-                                    @csrf
-                                    {{ method_field('DELETE') }}
-                                    <input type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Borrar">
-                                </form>
+                                @if (session('tipoUsuario')=="Administrador")
+                                    <form action="{{ url('/docente/'.$docente->Id) }}" method="post">
+                                        @csrf
+                                        {{ method_field('DELETE') }}
+                                        <input class="btn btn-danger btn-sm" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar">
+                                    </form>
+                                @endif
+                                @if (session('tipoUsuario')=="Docente")
+                                    <a href="{{ url('/docente/'.$docente->Id.'/edit') }}">
+                                        Editar
+                                    </a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
@@ -50,3 +52,5 @@ Mostrar lista de docentes
         </div>
     </div>
 </div>
+
+@include('footer')

@@ -41,6 +41,8 @@ Route::resource('/curso', CursoController::class);
 
 Route::resource('/login', LoginController::class);
 
+//Route::get('/docente/miperfil', [\App\Http\Controllers\DocenteController::class, 'docente'])->name('docente.miperfil');
+
 /*route::get('/login', function () {
 return view("login"); });
 

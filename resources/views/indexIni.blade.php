@@ -1,5 +1,5 @@
-@extends('menu')
+@include('menu')
 
-hola
+<h1>Bienvenido(a) {{ session('tipoUsuario') }} {{ session('nombre') }} {{ session('apellido') }}</h1>
 
-@extends('footer')
+
