@@ -4,9 +4,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<!--@php
+@php
     use App\Http\Controllers\LoginController;
-@endphp-->
+@endphp
 
 <style type="text/css">
 #p1{
@@ -140,9 +140,7 @@
                                 <div class="form-group" id="bt1">
                                     <center>
                                         <input type="submit"  class="btn btn-block btn-lg" name="Login" id="Login" value="Login">
-                                        @if (isset($_POST["submit"]))
-                                    <span style="color: red">{{ $men }}</span>
-                                    @endif
+
                                 </center>
                                 </div>
                                 <center>
@@ -161,7 +159,11 @@
         </div>
         <div class="row" id="e3">
             <div class="col">
-
+                <center>
+                    @php
+                    echo session('error');
+                    @endphp
+                </center>
 
                 <br>
                 <br>
@@ -174,6 +176,5 @@
         </div>
     </div>
 </body>
-
 
 

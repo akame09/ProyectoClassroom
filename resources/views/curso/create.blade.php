@@ -1,10 +1,13 @@
-Crear Cursos
+
 
 <!-- Scripts
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+
+
+@include('menu')
 
 <form action="{{ url("/curso") }}" method="post" >
     @csrf
@@ -27,3 +30,5 @@ Crear Cursos
 
 </form>
 
+
+@include('footer')

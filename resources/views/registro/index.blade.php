@@ -1,11 +1,6 @@
-
-
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-@include('menu')
-
 
 <div class="container">
     <div class="row">
@@ -29,9 +24,6 @@
                             <td>S/.{{ $curso->Costo }}</td>
                             <td>{{ $curso->Descripcion }}</td>
                             <td>
-                                <a href="{{ url('/curso/'.$curso->Id.'/edit') }}">
-                                    Editar
-                                </a>
                                 <form action="{{ url('/curso/'.$curso->Id) }}" method="post">
                                     @csrf
                                     {{ method_field('DELETE') }}
@@ -45,5 +37,3 @@
         </div>
     </div>
 </div>
-
-@include('footer')

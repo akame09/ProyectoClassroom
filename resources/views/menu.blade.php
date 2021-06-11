@@ -13,16 +13,32 @@
         border-color: black;
     }
 </style>
-@foreach ( $dat_gen as $login)
+
+
+ <!--
+
+
+
+    string $nom = session('nombre');
+    string $ape = session('apellido');
+    string $tipo = session('tipoUsuario');
+    int $id = session('id'); -->
+
+
+
+
 <div class="container-fluid" id="bf1">
     <div class="row">
         <div class="col-2">
             <nav class="navbar navbar-expand-lg bg-dark" id="r2">
-                <li class="nav-item nav-link">{{ $login->Nombre}} {{ $login->Apellido}}</li>
+               <!-- <li class="nav-item nav-link"></li> -->
+               <center>
+                <li class="nav-item nav-link">{{ session('nombre') }} {{ session('apellido') }}</li>
+               </center>
+
             </nav>
         </div>
         <div class="col-2">
-
         </div>
         <div class="col-8">
             <nav class="navbar navbar-expand-lg bg-dark" id="r2">
@@ -33,24 +49,29 @@
 
 
 
-                            <!--<a href="">{{ $login->tipoUsuario}}</a> -->
+                            <!--<a href=""></a> -->
 
-                        @switch($login->tipoUsuario)
+                        @switch(session('tipoUsuario'))
 
                             @case("Administrador")
 
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente/create') }}">Crear Docente</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/create') }}" >Crear Curso</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente') }}" >Ver Docente</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso') }}" >Ver Cursos</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#" >Ver Estudiantes Registrados</a></li>
 
                                 @break
                             @case("Docente")
-                                <li class="nav-item nav-link" id="r1"><a href="#">Mi Curso</a></li>
+
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente/show')}}">Mi Perfil</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/show')}}">Mi Curso</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#">Subir Archivos</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#">Visualizar Estudiantes</a></li>
                                 @break
                             @case("Estudiante")
+
+                                <li class="nav-item nav-link" id="r1"><a href="#">Mi Perfil</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#">Comprar Cursos</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#">Visualizar mis Cursos</a></li>
                             @break
@@ -66,16 +87,16 @@
         </div>
     </div>
 </div>
-@endforeach
+<!--  -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-3 bg-info">
+        <div class="col-1">
 
         </div>
-        <div class="col-6">
-            @yield('contenido')
+        <div class="col-10">
+            <br><br>
 
-@extends('footer')
+
 
 
 

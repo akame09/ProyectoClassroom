@@ -1,4 +1,4 @@
-editar docentes
+@include('menu')
 
 @foreach ($consul as $conn)
 <form action="{{ url("/docente/".$conn->Id) }}" method="post">
@@ -44,3 +44,5 @@ editar docentes
 
 </form>
 @endforeach
+
+@include('footer')
