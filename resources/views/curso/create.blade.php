@@ -8,6 +8,10 @@
 
 
 @include('menu')
+<center>
+    <h3>Creacion de Cursos</h3><br>
+</center>
+
 
 <form action="{{ url("/curso") }}" method="post" >
     @csrf
@@ -21,7 +25,7 @@
     </div>
     <div class="form-group">
         <label for="Descripcion" >Descripcion: </label><br>
-        <input type="text" name="Descripcion"  id="Descripcion"><br>
+        <textarea name="Descripcion"  id="Descripcion" row = "4"></textarea><br>
     </div>
 
     <div class="form-group">

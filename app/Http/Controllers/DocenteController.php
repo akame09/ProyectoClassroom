@@ -17,6 +17,13 @@ class DocenteController extends Controller
 
     public function update(Request $request, $Id){
 
+        $request->validate([
+            'E-mail' => 'required',
+            'Password' => 'required|min:5|max:25',
+            'Nombre' => 'required',
+            'Apellido' => 'required',
+            'Telefono' => 'required',
+        ]);
 
         $data = request()->except(['_token','_method']);
 
@@ -25,17 +32,13 @@ class DocenteController extends Controller
         $nombre = $_POST['Nombre'];
         $apellido = $_POST['Apellido'];
         $telefono = $_POST['Telefono'];
-        $id_curso = $_POST['Curso'];
-        $tipo = $_POST['Tipo'];
 
         DB::update("UPDATE docente
-        SET Email='$email' , Pass='$password', Nombre='$nombre' , Apellido='$apellido', Telefono='$telefono' , Id_curso='$id_curso', tipoUsuario='$tipo'
+        SET Email='$email' , Pass='$password', Nombre='$nombre' , Apellido='$apellido', Telefono='$telefono'
         WHERE Id='$Id'
         ORDER BY(Id)");
 
         $consul["consul"] = DB::select("select * from docente where Id = $Id");
-
-        //return redirect('docente');
         return view('docente.edit',$consul);
     }
 
@@ -102,7 +105,10 @@ class DocenteController extends Controller
 
         return view('docente.miperfil',$MisDatos);
     }
+
+
 /*
+
     public function index(){
         return view('docente.index');
     }

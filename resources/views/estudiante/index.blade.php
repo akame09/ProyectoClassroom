@@ -1,5 +1,3 @@
-
-
 @include('menu')
 
 <div class="container">
@@ -9,38 +7,30 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Telefono</th>
-                        <th>E-mail</th>
-                        <th>Contraseña</th>
+                        <th>Estudiante</th>
                         <th>Curso</th>
-                        <th>Tipo</th>
+                        <th>Docente Encargado</th>
                         <th>Botones</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    @foreach ($doc as $docente)
+                    @foreach ($datosE as $reg)
                         <tr>
-                            <td>{{ $docente->Id }}</td>
-                            <td>{{ $docente->Nombre }}</td>
-                            <td>{{ $docente->Apellido }}</td>
-                            <td>{{ $docente->Telefono }}</td>
-                            <td>{{ $docente->Email }}</td>
-                            <td>{{ $docente->Pass }}</td>
-                            <td>{{ $docente->curso }}</td>
-                            <td>{{ $docente->tipoUsuario }}</td>
+                            <td>{{ $reg->Id }}</td>
+                            <td>{{ $reg->Estudiante }}</td>
+                            <td>{{ $reg->Nombre_Curso }}</td>
+                            <td>{{ $reg->Docente }}</td>
                             <td>
                                 @if (session('tipoUsuario')=="Administrador")
-                                    <form action="{{ url('/docente/'.$docente->Id) }}" method="post">
+                                    <form action="{{ url('/estudiante/'.$reg->Id) }}" method="post">
                                         @csrf
                                         {{ method_field('DELETE') }}
                                         <input class="btn btn-danger btn-sm" type="submit" onclick="return confirm('¿Quieres Eliminar?')" value="Eliminar">
                                     </form>
                                 @endif
                                 @if (session('tipoUsuario')=="Docente")
-                                    <a href="{{ url('/docente/'.$docente->Id.'/edit') }}">
+                                    <a href="{{ url('/docente/'.$reg->Id.'/edit') }}">
                                         Editar
                                     </a>
                                 @endif
@@ -54,10 +44,3 @@
 </div>
 
 @include('footer')
-
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Harry Potter</h5>
-        <p class="card-text">dsdaidiadfsadadsadwafgrddswadwa</p>
-    </div>
-</div>

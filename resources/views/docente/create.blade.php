@@ -13,6 +13,9 @@
 
     $cur = DB::select("select * from curso");
 @endphp
+<center>
+    <h3>Creacion de Usuarios(Docente)</h2>
+</center>
 
 <form action="{{ url("/docente") }}" method="post" >
     @csrf
