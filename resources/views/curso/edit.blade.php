@@ -1,12 +1,15 @@
-editar Cursos
+
 
 <!-- Scripts
 <script src="{{ asset('js/app.js') }}" defer></script>
 
 
 <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
+@include('menu')
+
 
 @foreach ($curso as $cur)
+    <h3>Editar Curso: {{ $cur->Nombre }}</h3>
 <form action="{{ url("/curso/".$cur->Id) }}" method="post" >
 @csrf
 {{ method_field('PATCH') }}
@@ -29,3 +32,5 @@ editar Cursos
 
 </form>
 @endforeach
+
+@include('footer')

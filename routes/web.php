@@ -6,6 +6,7 @@ use App\Http\Controllers\DocenteController;
 use App\Http\Controllers\EstudianteController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RegistromatriculaController;
 use models\curso;
 use models\docente;
 use models\estudiante;
@@ -40,6 +41,16 @@ Route::resource('/estudiante', EstudianteController::class);
 Route::resource('/curso', CursoController::class);
 
 Route::resource('/login', LoginController::class);
+
+Route::resource('/registro', RegistromatriculaController::class);
+
+//Route::view('/hola', 'hola');
+
+Route::get('/indexIni',[LoginController::class,'inicio']);
+
+
+
+//Route::get('/curso/curRegistrado',[CursoController::class,'registrarse']);
 
 //Route::get('/docente/miperfil', [\App\Http\Controllers\DocenteController::class, 'docente'])->name('docente.miperfil');
 

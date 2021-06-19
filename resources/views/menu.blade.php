@@ -54,26 +54,26 @@
                         @switch(session('tipoUsuario'))
 
                             @case("Administrador")
-
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('indexIni') }}">Inicio</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente/create') }}">Crear Docente</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/create') }}" >Crear Curso</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente') }}" >Ver Docente</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso') }}" >Ver Cursos</a></li>
-                                <li class="nav-item nav-link" id="r1"><a href="#" >Ver Estudiantes Registrados</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/estudiante') }}" >Ver Estudiantes Registrados</a></li>
 
                                 @break
                             @case("Docente")
-
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('indexIni') }}">Inicio</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente/show')}}">Mi Perfil</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/show')}}">Mi Curso</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="#">Subir Archivos</a></li>
-                                <li class="nav-item nav-link" id="r1"><a href="#">Visualizar Estudiantes</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/estudiante/show')}}">Visualizar Estudiantes</a></li>
                                 @break
                             @case("Estudiante")
-
-                                <li class="nav-item nav-link" id="r1"><a href="#">Mi Perfil</a></li>
-                                <li class="nav-item nav-link" id="r1"><a href="#">Comprar Cursos</a></li>
-                                <li class="nav-item nav-link" id="r1"><a href="#">Visualizar mis Cursos</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('indexIni') }}">Inicio</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/estudiante/show')}}">Mi Perfil</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso') }}">Comprar Cursos</a></li>
+                                <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/show') }}">Visualizar mis Cursos</a></li>
                             @break
 
                             @default
@@ -94,7 +94,7 @@
 
         </div>
         <div class="col-10">
-            <br><br>
+            <br>
 
 
 

@@ -12,6 +12,14 @@ class CursoController extends Controller
     //
     public function index(){
 
+
+
+
+        /*if (($clave = array_search("Chau", $textos)) !== false) {
+            unset($textos[$clave]);
+            print_r($textos);
+        }*/
+
         //$datosD['doc'] = DB::select('select * from docente');
         $curso['cur'] = DB::select('select * from curso');
 
@@ -75,9 +83,27 @@ class CursoController extends Controller
     }
 
     public function show(){
-        $dat_id = session('id');
-        $MisDatos['MisDatos'] = DB::select("select c.Id, c.Nombre, c.Descripcion from curso as c join docente as d on d.id_curso=c.id where d.id = '$dat_id'");
+        if (session('tipoUsuario')=="Docente") {
+            $dat_id = session('id');
+            $MisDatos['MisDatos'] = DB::select("select c.Id as 'Id', c.Nombre as 'Curso', c.Descripcion as 'Descripcion', count(e.id) from curso as c
+                                                join docente as d on d.Id_Curso = c.Id
+                                                join registromatricula as r on r.Id_curso=c.Id
+                                                join estudiante as e on e.Id=r.Id_estudiante where d.Id='$dat_id'");
+        }elseif (session('tipoUsuario')=="Estudiante") {
+            $dat_id = session('id');
+            $MisDatos['MisDatos'] = DB::select("select e.Id, c.Id, c.Nombre as 'Curso',c.Costo as 'Costo', c.Descripcion as 'Descripcion',concat( d.Nombre,' ', d.Apellido) as 'Docente' from curso as c
+                                                join docente as d on d.Id_Curso = c.Id
+                                                join registromatricula as r on r.Id_curso=c.Id
+                                                join estudiante as e on e.Id=r.Id_estudiante where e.Id='$dat_id'");
+        }
 
-        return view('curso.micurso',$MisDatos);
+    return view('curso.micurso',$MisDatos);
+    }
+
+    public function getId(int $sd){
+
+        $data['data'] = DB::select("SELECT * FROM curso where id= '$sd'");
+
+        return view('/registro', $data);
     }
 }

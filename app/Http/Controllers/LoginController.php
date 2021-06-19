@@ -57,6 +57,7 @@ class LoginController extends Controller
                 session(['tipoUsuario' => $tipoUsuario]);
                 session(['id' => $id]);
                 session(['error' => '']);
+                session(['id_cur' => '']);
 
                 return view('indexIni');
                 //return view('menu',$dat_gen);
@@ -75,6 +76,7 @@ class LoginController extends Controller
                         $apellido = $dat->Apellido;
                         $tipoUsuario = $dat->tipoUsuario;
                         $id = $dat->Id;
+                        $id_cur = $dat->Id_curso;
                     }
 
                     session(['nombre' => $nombre]);
@@ -82,6 +84,7 @@ class LoginController extends Controller
                     session(['tipoUsuario' => $tipoUsuario]);
                     session(['id' => $id]);
                     session(['error' => '']);
+                    session(['id_cur' => $id_cur]);
 
                     return view('indexIni');
                 }else {
@@ -106,6 +109,7 @@ class LoginController extends Controller
                     session(['tipoUsuario' => $tipoUsuario]);
                     session(['id' => $id]);
                     session(['error' => '']);
+                    session(['id_cur' => '']);
 
                     return view('indexIni');
                 }else {
@@ -135,7 +139,13 @@ class LoginController extends Controller
     }
 
     public function index(){
+        $men = "";
+        session(['error' => $men]);
+
         return view('login');
 
+    }
+    public function inicio(){
+        return view('indexIni');
     }
 }
