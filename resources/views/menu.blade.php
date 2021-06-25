@@ -12,6 +12,13 @@
         border: 1px;
         border-color: black;
     }
+
+    #l1{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        font-size: 18px;
+        color: rgb(19, 168, 228);
+    }
+
 </style>
 
 
@@ -66,7 +73,6 @@
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('indexIni') }}">Inicio</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/docente/show')}}">Mi Perfil</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/curso/show')}}">Mi Curso</a></li>
-                                <li class="nav-item nav-link" id="r1"><a href="#">Subir Archivos</a></li>
                                 <li class="nav-item nav-link" id="r1"><a href="{{ url('/estudiante/show')}}">Visualizar Estudiantes</a></li>
                                 @break
                             @case("Estudiante")

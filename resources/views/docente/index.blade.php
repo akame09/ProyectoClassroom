@@ -1,6 +1,9 @@
 
 
 @include('menu')
+<center>
+    <h3>Visualizacion de Usuarios(Docente)</h2><br>
+</center>
 
 <div class="container">
     <div class="row">
@@ -55,9 +58,3 @@
 
 @include('footer')
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Harry Potter</h5>
-        <p class="card-text">dsdaidiadfsadadsadwafgrddswadwa</p>
-    </div>
-</div>

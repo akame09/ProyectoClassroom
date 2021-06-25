@@ -11,7 +11,7 @@
     <div class="row">
         @switch(session('tipoUsuario'))
             @case("Administrador")
-                <h3>Cursos</h3>
+                <h3>Visualizar Cursos</h3>
                 @foreach ($cur as $curso)
                     <div class="col-4" style=" margin-top:17px">
                         <div class="card" style="width: 20rem;">
@@ -69,10 +69,7 @@
                                 <div class="container-fluid">
                                     <div class="row">
                                         <div class="col">
-                                            @php
-                                                $sd = $curso->Id;
-                                            @endphp
-                                            <a id="submit" name="submit" onclick="return confirm('¿Estas seguro de registrarte en este curso?')" href="{{ url('/buscar-curso/'.$sd.'/registro')}}" class="btn btn-primary">Registrarse</a>
+                                            <a id="submit" name="submit" onclick="return confirm('¿Estas seguro de registrarte en este curso?')" href="{{ url('/registro/'.$curso->Id.'/edit') }}" class="btn btn-primary">Registrarse</a>
                                         </div>
                                     </div>
                                 </div>
