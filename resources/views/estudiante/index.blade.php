@@ -1,4 +1,7 @@
 @include('menu')
+<center>
+    <h2>Visualizar Estudiantes Registrados</h2><br>
+</center>
 
 <div class="container">
     <div class="row">

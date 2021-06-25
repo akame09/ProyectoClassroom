@@ -11,11 +11,50 @@ class RegistromatriculaController extends Controller
     //
     public function index(){
 
-        //$datosD['doc'] = DB::select('select * from docente');
-        //$reg['reg'] = DB::select('select * from curso');
+        $id_c = session('id_curso_registro');
+        $id_e = session('id');
 
-        //dd($datosD);
+
+        DB::insert("INSERT INTO registromatricula (Id_curso,Id_estudiante) VALUES ('$id_c','$id_e')");
+
        return view('registro.index');
 
+    }
+    public function edit($Id){
+
+
+        session(['id_curso_registro' => $Id]);
+
+        return view('registro.edit');
+    }
+
+    public function update($Id){
+
+        $id_c = $Id;
+        $id_e = session('id');
+
+
+        DB::insert("INSERT INTO registromatricula (Id_curso,Id_estudiante) VALUES ('$id_c','$id_e')");
+
+
+        return view('registro.edit');
+    }
+
+    public function store(Request $request){
+
+        $id_c = session('id_curso_registro');
+        $id_e = session('id');
+
+
+        DB::insert("INSERT INTO registromatricula (Id_curso,Id_estudiante) VALUES ('$id_c','$id_e')");
+
+
+
+        //return $data;
+        //docente::insert($data);
+        //return view("/docente/create");
+        //response()->json($data);
+        //$resul = "Registrado Exitosamente";
+        return view('registro.index');
     }
 }
